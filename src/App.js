@@ -1,100 +1,145 @@
 import React, { useState } from 'react';
+import {
+  Grid,
+  Box,
+  Button,
+  Typography,
+} from '@mui/material';
 
 const ValentineCard = () => {
   const [hasAccepted, setHasAccepted] = useState(false);
-  const [noButtonPos, setNoButtonPos] = useState({ top: '50%', left: '60%' });
+  const [noButtonPos, setNoButtonPos] = useState({ top: '60%', left: '55%' });
 
-  // Function to move the "No" button to a random position
   const moveButton = () => {
-    const randomTop = Math.floor(Math.random() * 80 + 10) + "%";
-    const randomLeft = Math.floor(Math.random() * 80 + 10) + "%";
+    const randomTop = Math.floor(Math.random() * 60 + 20) + '%';
+    const randomLeft = Math.floor(Math.random() * 60 + 20) + '%';
     setNoButtonPos({ top: randomTop, left: randomLeft });
   };
 
-  const containerStyle = {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fce4ec', // Light pink background
-    fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
-    textAlign: 'center',
-    overflow: 'hidden',
-  };
-
-  const cardStyle = {
-    padding: '60px',
-    backgroundColor: 'white',
-    borderRadius: '20px',
-    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-    position: 'relative',
-    minWidth: '350px',
-  };
-
-  const buttonStyle = {
-    padding: '12px 25px',
-    fontSize: '18px',
-    margin: '10px',
-    cursor: 'pointer',
-    borderRadius: '10px',
-    border: 'none',
-    transition: 'transform 0.2s',
-  };
-
-  if (hasAccepted) {
-    return (
-      <div style={containerStyle}>
-        <div style={cardStyle}>
-          <h1 style={{ color: '#d81b60' }}>💖 YAY!!! 💖</h1>
-          <p style={{ fontSize: '1.2rem' }}>Best decision ever! 🥰</p>
-          <img 
-            src='/images/GAN passphoto.jpeg'
-            alt="Celebrating" 
-            style={{ width: '250px', height: '300px', borderRadius: '10px', marginTop: '15px', objectFit: 'cover' }}
-          />
-          <p style={{ marginTop: '15px', fontWeight: 'bold' }}>I love you ❤️</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div style={containerStyle}>
-      <div style={cardStyle}>
- <h2 style={{ color: '#333', fontSize: '32px' }}>
-  <strong>Bangaram</strong> (Gowri), <br />
-  will you be my Valentine? 💕
-</h2>
-
-
-        
-        <div style={{ marginTop: '30px', display: 'flex', justifyContent: 'center', gap: '20px' }}>
-          <button 
-            style={{ ...buttonStyle, backgroundColor: '#e91e63', color: 'white' }}
-            onClick={() => setHasAccepted(true)}
-          >
-            YES
-          </button>
-
-          <button 
-            style={{ 
-              ...buttonStyle, 
-              position: 'fixed', // Use fixed or absolute to move it anywhere
-              top: noButtonPos.top, 
-              left: noButtonPos.left,
-              backgroundColor: '#eee',
-              color: '#333',
-              transition: 'all 0.2s ease'
+    <Box
+      sx={{
+        minHeight: '100vh',
+        backgroundColor: '#fce4ec',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2,
+      }}
+    >
+      <Grid
+        container
+        justifyContent="center"
+      >
+        <Grid
+          item
+          xs={12}     // 📱 Mobile
+          sm={10}
+          md={8}
+          lg={6}     // 💻 Laptop
+        >
+          <Box
+            sx={{
+              bgcolor: '#fff',
+              borderRadius: 3,
+              boxShadow: 3,
+              p: { xs: 3, md: 6 }, // responsive padding
+              textAlign: 'center',
+              position: 'relative',
             }}
-            onMouseOver={moveButton}
-            onClick={moveButton}
           >
-            NO
-          </button>
-        </div>
-      </div>
-    </div>
+            {!hasAccepted ? (
+              <>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontSize: { xs: '22px', md: '32px' },
+                    lineHeight: 1.4,
+                    mb: 4,
+                  }}
+                >
+                  <strong>Bangaram</strong> (Gowri), <br />
+                I Think you hate me ? 💕
+                </Typography>
+
+                <Box>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      bgcolor: '#e91e63',
+                      mr: 2,
+                      px: 4,
+                      py: 1.5,
+                      fontSize: '16px',
+                      '&:hover': { bgcolor: '#d81b60' },
+                    }}
+                    onClick={() => setHasAccepted(true)}
+                  >
+                    YES
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      position: 'fixed',
+                      top: noButtonPos.top,
+                      left: noButtonPos.left,
+                      px: 4,
+                      py: 1.5,
+                      fontSize: '16px',
+                    }}
+                    onMouseOver={moveButton}
+                    onTouchStart={moveButton}
+                    onClick={moveButton}
+                  >
+                    NO
+                  </Button>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Typography
+                  variant="h3"
+                  color="secondary"
+                  mb={2}
+                >
+                  💖 YAY!!! 💖
+                </Typography>
+
+                <Typography mb={2}>
+                  Bangaram you are mine! 🥰
+                </Typography>
+
+<Box
+  component="video"
+  src="/images/GAN passphoto.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  sx={{
+    width: 250,
+    height: 300,
+    borderRadius: 2,
+    mt: 2,
+    objectFit: 'cover',
+    display: 'block',
+    mx: 'auto',
+  }}
+/>
+
+
+
+                <Typography mt={2} fontWeight="bold">
+                   ❤️❤️❤️❤️❤️❤️❤️❤️
+                </Typography>
+                <Typography>Thank you for being so special to me Bangaram</Typography>
+              </>
+            )}
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
