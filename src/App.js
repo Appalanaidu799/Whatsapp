@@ -103,7 +103,7 @@ const ValentineCard = () => {
                   color="secondary"
                   mb={2}
                 >
-                  💖 YAY!!! 💖
+                  💖 <span style={{ fontSize: '0.8em' }}>😂😂😂</span> 💖
                 </Typography>
 
                 <Typography mb={2}>
