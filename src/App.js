@@ -43,7 +43,7 @@ const ValentineCard = () => {
               bgcolor: '#fff',
               borderRadius: 3,
               boxShadow: 3,
-              p: { xs: 3, md: 6 }, // responsive padding
+              p: { xs: 4, md: 6 }, // responsive padding
               textAlign: 'center',
               position: 'relative',
             }}
