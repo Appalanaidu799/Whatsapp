@@ -49,7 +49,7 @@ const ValentineCard = () => {
           <h1 style={{ color: '#d81b60' }}>💖 YAY!!! 💖</h1>
           <p style={{ fontSize: '1.2rem' }}>Best decision ever! 🥰</p>
           <img 
-            src='/images/GAN passphoto.jpg'
+            src='/images/GAN passphoto.jpeg'
             alt="Celebrating" 
             style={{ width: '250px', height: '300px', borderRadius: '10px', marginTop: '15px', objectFit: 'cover' }}
           />
